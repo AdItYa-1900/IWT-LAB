@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <script>
+        var marks=98
+        var grade;
+        if(marks>=90){
+            grade='A';
+        }
+        else if(marks>=75){
+            grade='B';
+        }
+        else if(marks>=50){
+            grade='C';
+        }
+        else{
+            grade='Fail';
+        }
+        document.write("Grade is:"+grade+"<br>");
+        var c=6
+        var i,f=1;
+        for(i=1;i<=c;i++){
+            f=f*i;
+        }
+        document.write("Factorial is:"+f+"<br>");
+        var re=parseInt(prompt("Enter A Number:"));
+        var rev=0;
+        var or=re;
+        while(re!=0){
+            rev=(rev*10)+(re%10);
+            re=Math.floor(re/10);
+        }
+        if(or==rev){
+            document.write("It is Pallindrome <br>");
+        }
+        else{
+            document.write("It is not Pallindrome <br>");
+        }
+        var a=new Array(1,2,3,4,5,6,8,9);
+        sum=0;
+        largest=a[0];
+        smallest=a[0];
+        for(i=0;i<8;i++){
+            sum=sum+a[i];
+            if(a[i]>largest){
+                largest=a[i];
+            }
+            if(a[i]<smallest){
+                smallest=a[i];
+            }
+        }
+        document.writeln("Sum is:"+sum+"<br>"+"Average is:"+sum/8+"<br>"+"Largest is:"+largest+"<br>"+"Smallest is:"+smallest+"<br>")
+        var secondLargest=a[0];
+        var largest1=a[0];
+        for(i=0;i<8;i++){
+            if(a[i]>largest1){
+                secondLargest=largest1;
+                largest1=a[i];
+            }
+        }
+        document.write("Second Largest Element is:"+secondLargest+"<br>");
+        var b=new Array(1,2,3,1,3,5,7,3,1);      
+        for(i=0;i<9;i++){
+            for(j=i+1;j<9;j++){
+                if(b[i]==b[j]){
+                    b.splice(j,1);
+                }
+            }
+        }
+        document.write(b+"<br>")
+        var b=new Array(1,2,3,1,3,5,7,3,1);  
+        var count=0;
+        for(i=0;i<9;i++){
+            count=0;
+            for(j=0;j<9;j++){
+                if(b[i]==b[j]){
+                    count++;
+                }
+            }
+            document.write("Count of "+b[i]+" is "+count+"<br>");
+        }   
+        var num2=7;
+        function isPrime(num){
+            var f=0;
+            for(i=2;i<=num/2;i++){
+                if(num%i==0){
+                    f++;
+                }
+            }
+            if(f>=1){
+                document.write("Not Prime <br>");
+            }
+            else{
+                document.write("Prime <br>");
+            }
+        }
+        isPrime(num2);
+        var num3=123;
+        function isArmstrong(num){
+            var sum=0;
+            var or=num3;
+            while(num!=0){
+                sum=sum+Math.pow(num%10,3);
+                num=Math.floor(num/10);
+            }
+            if(or==sum){
+                document.write("Armstrong Number <br>");
+            }
+            else{
+                document.write("Not Armstrong Number <br>");
+            }
+        }
+        isArmstrong(num3);
+        var d=new Array(1,2,3,4,5,6,7,8,9);
+        function arraySplitOddAndEven(arr){
+            var odd=[];
+            var even=[];
+            for(i=0;i<arr.length;i++){
+                if(arr[i]%2==0){
+                    even.push(arr[i]);
+                }
+                else{
+                    odd.push(arr[i]);
+                }
+            }
+            document.write("Even Array:"+even+"<br>"+"Odd Array:"+odd+"<br>")
+        }
+        arraySplitOddAndEven(d);
+        function reverse(arr){
+            var rev=[];
+            for(i=arr.length-1;i>=0;i--){
+                rev.push(arr[i]);
+            }
+            document.write("Reversed Array:"+rev+"<br>")
+        }
+        reverse(d);
+        var e=12;
+        function generateFibonacci(n){
+            var a=0,b=1,sum=0;
+            document.write(a+"<br>");
+            document.write(b+"<br>");
+            for(i=1;i<=n-2;i++){
+                sum=a+b;
+                document.write(sum+"<br>");
+                a=b;
+                b=sum;
+            }
+        }
+        generateFibonacci(e);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
