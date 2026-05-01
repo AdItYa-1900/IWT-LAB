@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <script>
+        var ini=0;
+        function changeText() {
+            var he2=document.getElementById("ch");
+            he2="Welcome to DOM Manipulation!";
+            document.write(he2);
+        }
+        function changeVisibility() {
+            var paragraph = document.getElementById("shs");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+        function changeColor() {
+            var button = event.target;
+            var color = button.value;
+            var confirmChange = confirm("Are you sure you want to change the color to " +color + "?");
+            if (confirmChange) {
+                button.parentElement.style.backgroundColor = color;
+            }
+        }
+        function count(){
+            var button=event.target;
+            var opt=button.value;
+            if(opt=="add"){
+                ini++;
+                document.getElementById("inputField").value=ini;
+            }
+            else{
+                ini--;
+                document.getElementById("inputField").value=ini;
+            }
+        }
+        function prcheck(){
+            var num=document.getElementById("prcheck").value;
+            var isPrime=true;
+            if(num<=1){
+                isPrime=false;
+            }
+            else{
+                for(var i=2;i<=Math.sqrt(num);i++){
+                    if(num%i===0){
+                        isPrime=false;
+                        break;
+                    }
+                }
+            }
+            if(isPrime){
+                alert(num + " is a prime number.");
+            }
+            else{
+                alert(num + " is not a prime number.");
+            }
+        }
+        function convertCurrency(){
+            var currencyFrom=document.getElementById("currencyFrom").value;
+            var currencyTo=document.getElementById("currencyTo").value;
+            var amount=document.getElementById("amount").value;
+            var exchangeRates={
+                "USD":1,
+                "EUR":0.93,
+                "GBP":0.92,
+                "INR":82.74,
+                "AUD":1.47
+            };
+            if(isNaN(amount) || amount<=0 || !exchangeRates[currencyFrom] || !exchangeRates[currencyTo] || currencyFrom===currencyTo){
+                alert("Error: Please enter a valid amount and select different currencies.");
+                return;
+            }
+            var convertedAmount=(amount/exchangeRates[currencyFrom])*exchangeRates[currencyTo];
+            document.getElementById("amountRes").value=convertedAmount.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h2 id="ch">Hello World</h2>
+    <button onclick="changeText()">Click Me</button>
+    <p id="shs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nostrum dolore magni sit doloribus optio enim placeat tempore sapiente, vel, velit sed illo animi dolorum molestias eaque. Culpa, officia eaque.</p>
+    <button id="toggleButton" onclick="changeVisibility()">Change Visibility</button>
+    <div class="red">
+        <button value="red" onclick="changeColor()">RED</button>
+    </div>
+    <div class="green">
+        <button value="green" onclick="changeColor()">GREEN</button>
+    </div>
+    <div class="blue">
+        <button value="blue" onclick="changeColor()">BLUE</button>
+    </div>
+    <input type="text" id="inputField" placeholder="0">
+    <button value="add" onclick="count()">+</button>
+    <button value="sub" onclick="count()">-</button>
+    <br>
+    <input type="number" id="prcheck" placeholder="Enter the Number to Check">
+    <button id="submitpr" onClick="prcheck()">Check</button>
+    <div id="currencyConverterBox" style="width: 300px;height: 500px; border: 5px solid whitesmoke;margin: 20px auto; padding: 20px;">
+        <h2 style="text-align: center;color: darkblue;">Currency Converter</h2>
+        <h3>FROM:</h3>
+        <select id="currencyFrom" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="INR">INR</option>
+            <option value="AUD">AUD</option>
+        </select>
+        <input type="number" id="amount" placeholder="Enter Amount" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        <h3>TO:</h3>
+        <select id="currencyTo" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="INR">INR</option>
+            <option value="AUD">AUD</option>    
+        </select>
+        <input type="number" id="amountRes" placeholder="Resultant Amount" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        <button id="convertButton" style="width: 100%; padding: 10px; background-color: darkblue; color: white; border: none;" onClick="convertCurrency()">Convert</button>
+    </div>
+</body>
+</html>
